@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    1<input id="rango" type="range" min="1" max="10" value="1">10
+    <div id="padre"></div>
+    <script>
+        $(document).ready(function(){
+                var url="img/pelota1.jpg"
+                var img=$("<img>", {"src":url});
+            $("#rango").change(function(){
+                
+                $("#padre").text("");
+                var valor= $("#rango").val();
+                for(i=1;i<=valor;i++){
+                    $("#padre").append(img);
+                    img=$("<img>", {"src":url});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
