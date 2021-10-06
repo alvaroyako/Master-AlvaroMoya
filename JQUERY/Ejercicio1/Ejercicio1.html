@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <label for="">Numero 1</label>
+    <input type="number" id="numero1">
+    <br>
+    <label for="">Numero 2</label>
+    <input type="number" id="numero2">
+    <br>
+    <label for="">Numero 3</label>
+    <input type="number" id="numero3">
+    <br>
+    <button type="button" id="comprobar">Comprobar</button>
+    <br>
+    <div id="mayor"></div>
+    <div id="intermedio"></div>
+    <div id="menor"></div>
+    
+    <script>
+        $(document).ready(function(){
+            $("#comprobar").click(function(){
+                var n1=parseInt($("#numero1").val());
+                var n2=parseInt($("#numero2").val());
+                var n3=parseInt($("#numero3").val());
+                
+                if(n1>n2 && n2>n3){
+                    $("#mayor").text("El mayor es "+n1);
+                    $("#intermedio").text("El intermedio es "+n2);
+                    $("#menor").text("El menor es "+n3);
+
+                    $("#numero1").css("background-color", "green");
+                    $("#numero3").css("background-color", "red");
+                    $("#numero2").css("background-color", "white");
+                }
+                else if(n1>n3 && n3>n2){
+                    $("#mayor").text("El mayor es "+n1);
+                    $("#intermedio").text("El intermedio es "+n3);
+                    $("#menor").text("El menor es "+n2);
+
+                    $("#numero1").css("background-color", "green");
+                    $("#numero2").css("background-color", "red");
+                    $("#numero3").css("background-color", "white");
+                }
+                else if(n2>n1 && n1>n3){
+                    $("#mayor").text("El mayor es "+n2);
+                    $("#intermedio").text("El intermedio es "+n1);
+                    $("#menor").text("El menor es "+n3);
+
+                    $("#numero2").css("background-color", "green");
+                    $("#numero3").css("background-color", "red");
+                    $("#numero1").css("background-color", "white");
+                }
+                else if(n2>n3 && n3>n1){
+                    $("#mayor").text("El mayor es "+n2);
+                    $("#intermedio").text("El intermedio es "+n3);
+                    $("#menor").text("El menor es "+n1);
+
+                    $("#numero2").css("background-color", "green");
+                    $("#numero1").css("background-color", "red");
+                    $("#numero3").css("background-color", "white");
+                }
+                else if(n3>n1 && n1>n2){
+                    $("#mayor").text("El mayor es "+n3);
+                    $("#intermedio").text("El intermedio es "+n1);
+                    $("#menor").text("El menor es "+n2);
+
+                    $("#numero3").css("background-color", "green");
+                    $("#numero2").css("background-color", "red");
+                    $("#numero1").css("background-color", "white");
+                }
+                else if(n3>n2 && n2>n1){
+                    $("#mayor").text("El mayor es "+n3);
+                    $("#intermedio").text("El intermedio es "+n2);
+                    $("#menor").text("El menor es "+n1);
+
+                    $("#numero3").css("background-color", "green");
+                    $("#numero1").css("background-color", "red");
+                    $("#numero2").css("background-color", "white");
+                }
+            });
+            
+        });
+    </script>
+</body>
+</html>

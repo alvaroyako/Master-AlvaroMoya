@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <label for="">Introduce el dia</label>
+    <input type="number" id="dia">
+    <br>
+    <label for="">Introduce el mes</label>
+    <input type="number" id="mes">
+    <br>
+    <label for="">Introduce el año</label>
+    <input type="number" id="año">
+    <br>
+    <button type="button" id="calculo">Calcular</button>
+    <br>
+    <h1 id="final"></h1>
+    <script>
+        $(document).ready(function(){
+            $("#calculo").click(function (){
+            var dia=parseInt($("#dia").val())
+            var mes=parseInt($("#mes").val())
+            var año=parseInt($("#año").val())
+
+            switch(mes){
+                case 1: mes=13;
+                año=año-1;
+                break;
+                case 2: mes=14;
+                año=año-1;
+            }
+
+            var paso0= parseInt(((mes+1)*3)/5);
+            var paso1= parseInt(año/4);
+            var paso2= parseInt(año/100);
+            var paso3=parseInt(año/400);
+            var paso4= dia + (mes*2) + año + paso0 + paso1 - paso2 + paso3 + 2;
+            var paso5=parseInt(paso4/7);
+            var paso6=paso4-(paso5*7);
+
+            switch(paso6){
+                case 0: $("#final").text("Sabado");
+                break;
+                case 1: $("#final").text("Domingo");
+                break;
+                case 2: $("#final").text("Lunes");
+                break;
+                case 3: $("#final").text("Martes");
+                break;
+                case 4: $("#final").text("Miercoles");
+                break;
+                case 5: $("#final").text("Jueves");
+                break;
+                default: $("#final").text("Viernes");
+                break;
+            }
+            })
+
+            
+            
+        });
+
+    </script>
+</body>
+</html>
