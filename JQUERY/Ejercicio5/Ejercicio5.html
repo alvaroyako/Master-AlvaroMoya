@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Ejemplo each</h1>
+    <p>Parrafo 1</p>
+    <p>Parrafo 2</p>
+    <p>Parrafo 3</p>
+    <p>Parrafo 4</p>
+    <p>Parrafo 5</p>
+    <script>
+        $(document).ready(function(){
+            $("p").click(function(){
+                var colores=["blue", "yellow", "green", "purple", "red"];
+                //Queremos que cada p tenga color distinto al clicarlo
+                $("p").each(function(){
+                    var indice=parseInt(Math.random()*colores.length);
+                    //Recuperamos el color aleatorio
+                    var color=colores[indice];
+                    //cambiamos el color a cada p
+                    $(this).css("background-color",color)
+                });
+            });
+        });
+    </script>
+</body>
+</html>
