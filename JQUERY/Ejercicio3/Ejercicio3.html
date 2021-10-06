@@ -12,15 +12,39 @@
     <div id="padre"></div>
     <script>
         $(document).ready(function(){
-                var url="img/pelota1.jpg"
-                var img=$("<img>", {"src":url});
+
+                var url1="img/pelota1.jpg"
+                var url2="img/pelota2.jpg"
+                var img=$("<img>", {"src":url1});
+                var img2=$("<img>", {"src":url2});
+
+                $(img).mouseover(function(){
+                    $(this).attr("src", url2);
+
+                });
+
+                $(img).mouseout(function(){
+                $(this).attr("src", url1);
+                });
+                
             $("#rango").change(function(){
                 
                 $("#padre").text("");
                 var valor= $("#rango").val();
+
                 for(i=1;i<=valor;i++){
+
                     $("#padre").append(img);
-                    img=$("<img>", {"src":url});
+                    img=$("<img>", {"src":url1});
+
+                    $(img).mouseover(function(){
+                        $(this).attr("src", url2);
+                    });
+
+                    $(img).mouseout(function(){
+                        $(this).attr("src", url1);
+                    });
+
                 }
             });
         });
