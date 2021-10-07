@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+        1<input id="rango" type="range" min="1" max="10" value="1">10
+        <div id="padre1"></div>
+        <div id="padre2"></div>
+   <script>
+       $(document).ready(function(){
+
+    var url1="img/pelota1.jpg"
+    var url2="img/pelota2.jpg"
+
+    $("#rango").change(function(){
+
+        $("#padre1").text("");
+        $("#padre2").text("");
+        var valor= $("#rango").val();
+
+        for(i=1;i<=valor;i++){
+            var img=$("<img>", {"src":url1});
+            var btn=$("<button>", {"text":"Imagen"+i});
+            $(img).data("clave", i);
+            $(btn).data("clave", i);
+            $("#padre1").append(btn);
+            $("#padre2").append(img);
+    
+        btn.click(function(){
+            var claveButton=$(this).data("clave");
+            $("img").each(function(){
+               if($(this).data("clave")==claveButton){
+                $(this).attr("src", url2);
+               }
+            });
+        
+    });
+    }
+
+    });
+    });
+   </script> 
+</body>
+</html>
