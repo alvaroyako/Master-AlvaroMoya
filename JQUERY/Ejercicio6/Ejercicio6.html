@@ -13,12 +13,12 @@
     <button type="button" id="botonsumar">Sumar chequeados</button>
     <h1 id="resultado"></h1>
     <hr>
-    <input type="checkbox"/>
-    <input type="checkbox"/>
-    <input type="checkbox"/>
-    <input type="checkbox"/>
-    <input type="checkbox"/>
-    <input type="checkbox"/>
+    <input type="checkbox"/><label></label>
+    <input type="checkbox"/><label></label>
+    <input type="checkbox"/><label></label>
+    <input type="checkbox"/><label></label>
+    <input type="checkbox"/><label></label>
+    <input type="checkbox"/><label></label>
     
     <script>
         $(document).ready(function(){
@@ -27,6 +27,7 @@
                     var aleatorio=parseInt((Math.random()*100)+1);
                     
                     $(this).val(aleatorio);
+                    $(this).next().text(aleatorio);
                     
                     
             });  
