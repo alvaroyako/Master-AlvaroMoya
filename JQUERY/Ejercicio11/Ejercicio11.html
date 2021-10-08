@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Ejercicio 11</h1>
+    <div id="botones"></div>
+    <br>
+    <div id="texto"></div>
+    <script>
+        $(document).ready(function(){
+
+            $.get("xml/departamentosetiquetas.xml", function(data){
+                $(data).find("DEPARTAMENTO").each(function() {
+                    var Ndep=$(this).find("NUMERO").text();
+                    var btn=$("<button>", {"text":"Detalles "+Ndep, "id":"boton"+Ndep});
+                    var nombre=$(this).find("NOMBRE").text();
+                    var localidad=$(this).find("LOCALIDAD").text();
+                    var html="";
+                    $("#botones").append(btn);
+
+                    $("#boton"+Ndep).click(function(){
+                        html+="<p>"+nombre+", "+localidad+"</p>";
+                        $("#texto").html(html);
+                        html="";
+                    });
+                    
+                });
+
+               
+
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Documento departamentos</h1>
+    <button type="button" id="botonLeer">Cargar departamentos</button>
+    <button type="button" id="botonOcultar">Ocultar/Mostrar departamentos</button>
+    <ul id="lista"></ul>
+    <script>
+        $(document).ready(function(){
+            $("#botonLeer").click(function(){
+                $.get("xml/departamentosetiquetas.xml", function(data){
+                    var html="";
+                    $(data).find("DEPARTAMENTO").each(function(){
+                        var nombre=$(this).find("NOMBRE").text();
+                        var localidad=$(this).find("LOCALIDAD").text();
+                        html+="<li>"+nombre+", "+localidad+"</li>";
+                        $("#lista").html(html);
+                        
+                    });
+                    
+                });
+
+                $(this).hide();
+            });
+            $("#botonOcultar").click(function(){
+                $("#lista").toggle();
+            });
+        });
+    </script>
+</body>
+</html>

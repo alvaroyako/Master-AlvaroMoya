@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Busquedas XML</h1>
+    <label>Apellido:</label>
+    <input type="text" id="cajaApellido"/>
+    <button id="botonApellido">Buscar apellidos</button>
+    <hr>
+    <label>Hospital:</label>
+    <input type="text" id="cajaHospital"/>
+    <button id="botonHospital">Buscar Hospital</button>
+    <hr>
+    <div id="contenido"></div>
+    <script>
+        $(document).ready(function(){
+
+            $("#botonHospital").click(function(){
+                var codigo=$("#cajaHospital").val();
+                $.get("xml/hospital_atributos.xml", function(data){
+                   var filtro="HOSPITAL[HOSPITAL_COD="+codigo+"]";
+                    var nodohospital = $(data).find(filtro).first();
+                    var nombre=nodohospital.attr("NOMBRE");
+                    $("#contenido").html("<h1>Resultado: "+nombre+"</h1>");
+                });
+                
+            });
+
+            $("#botonApellido").click(function(){
+                var apellido=$("#cajaApellido").val();
+                var contador=0;
+                $.get("xml/empleados.xml", function(data){
+                   var filtro="APELLIDO:contains("+apellido+")";
+                    var html="";
+                    $(data).find(filtro).each(function(){
+                        contador++;
+                        html+="<p>"+$(this).text()+"</p>";
+                        
+                    });
+                    
+                    $("#contenido").html("Hay "+contador+" resultados"+html);
+                    
+                    });
+                    
+                    
+                });
+                
+            });
+
+
+       
+    </script>
+</body>
+</html>
