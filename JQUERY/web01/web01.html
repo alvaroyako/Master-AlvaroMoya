@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    
+    <h1 style>Ejemplo atributos</h1>
+    <img src="img/pelota1.jpg" alt="">
+    <img src="img/pelota1.jpg" alt="">
+    
+    <script>
+        $(document).ready(function(){
+            //Cambia de imagen al poner el cursor encima
+            $("img").mouseover(function(){
+                $(this).attr("src", "img/pelota2.jpg");
+            });
+            //Cambia de imagen al quitar el cursor
+            $("img").mouseout(function(){
+                $(this).attr("src", "img/pelota1.jpg");
+            });
+        });
+    </script>
+</body>
+</html>

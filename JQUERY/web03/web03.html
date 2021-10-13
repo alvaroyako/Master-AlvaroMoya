@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Generar controles dinamicamente</h1>
+    <label">Introduce texto: </label>
+    <input type="text" id="cajatexto"/>
+    <button id="crear">Crear titulo</button>
+    <div id="padre"></div>
+    <script>
+        $(document).ready(function(){
+            //Solo sirve para los elementos creados al cargar la pagina, los añadidos no. Para los añadidos es necesario un listener(mouseover por ejemplo)
+            $("h1").click(function(){
+                var texto=$("#cajatexto").val();
+                alert(texto);
+            });
+
+            $("#crear").click(function(){
+                var texto=$("#cajatexto").val();
+                //var h1 = $("<h1>");
+                //h1.text(texto);
+                //h1.css("color", "fuchsia");
+                //$("#padre").append(h1);
+                //Crear controles con JSON
+                var h1=$("<h1>", {"text":texto, "style":"color:blue"});
+                
+                h1.appendTo($("#padre"));
+                //Al pulsar queremos poner el valor actual de la caja de texto
+                h1.click(function(){
+                    var texto=$("#cajatexto").val();
+                    alert(texto);
+                });
+            });
+            
+        });
+    </script>
+</body>
+</html>

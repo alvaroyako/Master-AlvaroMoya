@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rojo{
+            color:red;
+        }
+
+        .azul{
+            color:blue
+        }
+    </style>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Titulo 1</h1>
+    <h2 class="rojo">Titulo 2</h2>
+    <h3 class="rojo">Titulo 3</h3>
+
+    <button id="boton">Mostrar/Esconder h1</button>
+    <button id="botonRojo">Mostrar/Esconder rojos</button>
+    <button id="botonImg">Cambia imagen</button>
+    <br>
+    <br>
+    <img src="pelota1.jpg" alt="">
+
+    <script>
+        $(document).ready(function(){
+            //Esconde h1
+            $("h1").hide();
+            
+            //Esconde y muestra h1
+            $("#boton").click(function(){
+                $("h1").toggle();
+            });
+           
+            //Esconde y muestra rojos
+            $("#botonRojo").click(function(){
+                $(".rojo").toggle();
+            });
+
+            //Esconde rojos con efecto fade
+            $(".rojo").click(function(){
+                $(this).fadeOut(1000);
+            });
+
+            //Cambiar una imagen por otra
+            var imagen = $("img").attr("src");
+
+            $("#botonImg").click(function(){
+            if (imagen == "pelota1.jpg"){
+	            $("img").attr("src", "pelota2.jpg");
+            }else{
+	            $("img").attr("src", "pelota1.jpg");
+            }
+        });
+            
+            
+        });
+    </script>
+
+</body>
+</html>

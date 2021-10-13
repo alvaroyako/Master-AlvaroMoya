@@ -16,7 +16,13 @@
             $("#botonLeer").click(function(){
                 console.log("Antes servicio");
                 $.get("xml/empleados.xml", function(data){
-                    console.log("leyendo...")
+                    console.log("leyendo...");
+                    var html="";
+                    $(data).find("APELLIDO").each(function(){
+                        var apellido=$(this).text();
+                        html += "<li>" + apellido + "</li>";
+                    });
+                    $("#lista").html(html);
                 });
                 console.log("Despues servicio");
             })

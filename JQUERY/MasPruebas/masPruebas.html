@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .rojo{
+            color:red;
+        }
+
+        .azul{
+            color:blue
+        }
+    </style>
+</head>
+<script src="jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Me cambian de color</h1>
+    <button id="añadeColor">Añadir color</button>
+    <button id="quitaColor">Quitar color</button>
+    <button id="alternaColor">Alternar color</button>
+    <br>
+    <p id="triste">Soy un triste texto</p>
+    <br>
+    <input type="text" id="caja" value="7"/>
+
+    <script>
+        $("#añadeColor").click(function(){
+            $("h1").addClass("rojo")
+        });
+
+        $("#quitaColor").click(function(){
+            $("h1").removeClass("rojo")
+        });
+
+        $("#alternaColor").click(function(){
+            $("h1").toggleClass("rojo")
+        });
+
+        //Cambia el contenido del p con id triste
+        $("#triste").text("Otro valor");
+
+        //Convierte el contenido de p en un h1 y cambia el contenido
+        $("#triste").html("<h1>TITULO</h1>");
+
+        //En resumen text cambia el contenido del texto y html cambia la etiqueta
+
+        var valor=$("#caja").val();
+        //Aqui tenemos el 7
+        var doble = valor*2;
+        //Podemos escribir el valor nuevo
+        $("#caja").val(doble);
+    </script>
+</body>
+</html>
