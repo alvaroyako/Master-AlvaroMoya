@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="js/jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Jugadores</h1>
+    <select id="jugadores"></select>
+    <div id="contenido"></div>
+    <script>
+        $(document).ready(function(){
+            
+            $.ajax({
+                    "url": "json/jugadores.json"
+                    , "method": "GET"
+                    , "dataType": "json"
+                    , success: function(data){
+                        $.each(data.jugadores, function(index, jugador){
+                            var id=index;
+                            var nombre=jugador.nombre; 
+                            var option = $("<option>",
+                        {
+                            "text": nombre
+                            , "value": id
+                        });
+
+                            option.appendTo($("#jugadores"));
+                        });
+                    }, "error": function(){
+                        $("#contenido").text("Error en el servicio");
+                    }
+                });
+
+            $("#jugadores").change(function(){
+                $.ajax({
+                    "url": "json/jugadores.json"
+                    , "method": "GET"
+                    , "dataType": "json"
+                    , success: function(data){
+                        $.each(data.jugadores, function(index, jugador){
+                            var id=$("#jugadores").val();
+                            if(index==id){
+                            var nombre=jugador.nombre;
+                            var numero=jugador.numero;
+                            var posicion=jugador.posicion;
+                            var edad=jugador.edad;
+                            var img=jugador.imagen; 
+                            var p = $("<p>", { "text": nombre + ", " +numero+", "+posicion+", "+edad+" años, " });
+                            var img = $("<img>", { "src": img});
+                            $("#contenido").empty();
+                            $("#contenido").append(p);
+                            $("#contenido").append(img);
+                            }
+                        });
+                        
+                    }, "error": function(jk,q,h){
+                        $("#contenido").text("Error en el servicio");
+                        console.log(h);
+                    }
+                    
+                });
+            });
+        });
+    </script>
+</body>
+</html>

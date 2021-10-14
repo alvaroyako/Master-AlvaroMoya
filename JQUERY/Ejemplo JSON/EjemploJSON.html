@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Documento JSON simple</h1>
+    <button id="botonGet">Leer con getJson</button>
+    <button id="botonAjax">Leer con AJAX</button>
+    <hr>
+    <div id="contenido"></div>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#botonGet").click(function(){
+                $.getJSON("JSON/tareas.json", function(data){
+                    $.each(data, function(key, value){
+                        var h1=$("<h1>", {"text":"Clave: "+key+", Valor: "+value
+                    },"</h1>");
+                    h1.appendTo($("#contenido"));
+                    });
+                });
+            });
+
+            $("#botonAjax").click(function(){
+                $.ajax({
+                    "url": "JSON/tareas.json"
+                    , "method": "GET"
+                    , "dataType": "json"
+                    , success: function(data){
+                        $.each(data, function(key, value){
+                            var h1=$("<h1>", {
+                                "style": "color:red"
+                                , "text": "Clave: "+key
+                                + ", Valor: "+value
+                            });
+                            h1.appendTo($("#contenido"));
+                        });
+                    }, "error": function(){
+                        $("#contenido").text("Error en el servicio");
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+</html>
