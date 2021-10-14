@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<script src="js/jquery-3.6.0.min.js"></script>
+<body>
+    <h1>Departamentos y empleados</h1>
+    <table id="tablaDepartamentos" cellpadding="10">
+        <thead>
+            <tr>
+                <th>Numero</th>
+                <th>Nombre</th>
+                <th>Localidad</th>
+                <th>Empleados</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br><br>
+    <div id="contenido"></div>
+    <script>
+        var apiD="https://apicruddepartamentoscore.azurewebsites.net";
+        var apiE="https://apiempleadosspgs.azurewebsites.net";
+
+        $(document).ready(function(){
+            cargarDepartamentos();
+    
+        });
+
+        function cargarDepartamentos(){
+            var request="/api/departamentos";
+            $.ajax({
+               "url":apiD+request,
+               "type":"GET",
+               success: function(data){
+                   $.each(data,function(index,dept){
+                    
+                    var boton = $("<button>", { "value": dept.numero, "text":"Empleados", "class":"btn btn-info"});
+
+                    var tr = $("<tr>");
+                    
+
+
+                    var numero =$("<td>", {"text":dept.numero});
+
+                    var nombre =$("<td>", {"text":dept.nombre});
+
+                    var localidad =$("<td>", {"text":dept.localidad});
+
+                    var empleadostd =$("<td>");
+
+                    $("tbody").append(tr);
+                    tr.append(numero);
+                    tr.append(nombre);
+                    tr.append(localidad);
+                    tr.append(empleadostd)
+                    empleadostd.html(boton);
+                        
+                    boton.click(function(){
+                    
+                    
+                    var requestE="/api/Empleados/EmpleadosDepartamento/"+dept.numero;
+                        $.ajax({
+                            "url":apiE+requestE,
+                            "type":"GET",
+                            success: function(data){
+                            var html="";
+                            html+="<table cellpadding='10'>"
+                            html+="<thead>"
+                            html+="<tr><th>Id</th><th>Apellido</th><th>Oficio</th><th>Salario</th></tr>"
+                            html+="</thead>" 
+                            html+="<tbody>"      
+                            $.each(data,function(index,empl){
+                                
+                                
+                               
+                                   
+                                html+="<tr>";
+                                html+="<td>"+empl.idEmpleado+"</td>";
+                                html+="<td>"+empl.apellido+"</td>";
+                                html+="<td>"+empl.oficio+"</td>";
+                                html+="<td>"+empl.salario+"</td>";
+                                html+="</tr>"
+                                
+                            });
+                        html+="</tbody>"
+                        html+="</table>"
+                   $("#contenido").html(html);
+                   html="";
+               } 
+            });
+                
+            });
+                   });
+                   
+                   
+               } 
+            });
+        }
+    </script>
+</body>
+</html>
