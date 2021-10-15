@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<script src="js/jquery-3.6.0.min.js"></script>
+<body>
+    <div class="container">
+        <h1>CRUD Empleados</h1>
+        
+        <select id="oficios" class="form-control"></select>
+        <br>
+        <br>
+        <label>Introduce el incremento: </label>
+        <input type="text" id="cajaIncremento" class="form-control">
+        <br><br>
+        <button class="btn btn-warning">Realizar incremento</button>
+        <br><br>
+        <button class="btn btn-success">Mostrar empleados en funcion de empleo seleccionado</button>
+        <br><br>
+        <table id="empleados" class="table table-striped" cellpadding="10">
+            <thead class="table-danger">
+                <tr>
+                    <th>Apellido</th>
+                    <th>Oficio</th>
+                    <th>Salario</th>
+                    <th>Director</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+    <script>
+        var api="https://apiempleadosaction.azurewebsites.net";
+        $(document).ready(function(){
+            
+        })
+
+        function cargarEmpleados(){
+            var request="/api/Empleados";
+            $.ajax({
+                type: "GET",
+                url: api+request,
+                success: function (data) {
+                    var html="";
+                    $.each(data, function(index,empleado){
+                        var apellido=empleado.apellido;
+                        var oficio=empleado.oficio;
+                        var salario=empleado.salario;
+                        var director=empleado.director;
+
+                        html+="<tr>";
+                        
+                    });
+                    
+
+
+                }
+            });
+        }
+    </script>
+</body>
+</html>
