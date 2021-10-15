@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+</head>
+<script src="js/jquery-3.6.0.min.js"></script>
+<body>
+    <div class="container">
+    <h1>Salario empleados</h1>
+    <label>Introduce un salario</label>
+    <input id="cajaSalario" type="text" class="form-control" />
+    <br>
+    <button type="button" id="btnSalario" class="btn btn-success">Aceptar</button>
+    <table id="salarios" class="table " cellpadding="10">
+        <thead>
+            <tr>
+                <th>Apellido</th>
+                <th>Oficio</th>
+                <th>Salario</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <br><br>
+    <div id="contenido"></div>
+    <script>
+        var api="https://apiempleadosspgs.azurewebsites.net";
+
+        $(document).ready(function(){
+            $("#btnSalario").click(function(){
+                cargarSalarios();
+
+            });
+            
+        });
+        
+        function cargarSalarios(){
+            var salario=parseInt($("#cajaSalario").val());
+            var requestSalario="/api/Empleados/EmpleadosSalario/"+salario;
+            $.ajax({
+               "url":api+requestSalario,
+               "type":"GET",
+               success: function(data){
+                $("#salarios tbody").empty();
+                var valor=0;
+                   $.each(data,function(index,sal){
+                     
+                        var a = $("<td>", {"text":sal.apellido, "class":"link-primary "});
+
+                        var tr = $("<tr>");
+
+
+
+                        var oficio =$("<td>", {"text":sal.oficio});
+
+                        var salario =$("<td>", {"text":sal.salario});
+                        
+                            var id=sal.idEmpleado;
+                        
+                        
+                        $("#salarios tbody").append(tr);
+                        tr.append(a);
+                        tr.append(oficio);
+                        tr.append(salario);
+                        
+                        a.click(function(){
+                            
+                    var requestE="/api/Empleados/"+id;
+                    $.ajax({
+                        "url":api+requestE,
+                        "type":"GET",
+                        success: function(data){
+                            var html="";
+                            html+="<table class='table' cellpadding='10'>"
+                            html+="<thead>"
+                            html+="<tr><th>Id</th><th>Apellido</th><th>Oficio</th><th>Salario</th><th>Departamento</th></tr>"
+                            html+="</thead>" 
+                            html+="<tbody>"  
+                            html+="<tr>";
+                            html+="<td>"+data.idEmpleado+"</td>";
+                            html+="<td>"+data.apellido+"</td>";
+                            html+="<td>"+data.oficio+"</td>";
+                            html+="<td>"+data.salario+"</td>";
+                            html+="<td>"+data.departamento+"</td>";
+                            html+="</tr>";
+                            html+="</tbody>";
+                            html+="</table>";
+                            $("#contenido").html(html);
+                            html="";
+                        }
+                    });
+                   });
+                        
+
+                   });
+                  
+                   
+                   
+               } 
+            });
+        }
+            
+    </script>
+    </div>
+</body>
+</html>
