@@ -18,9 +18,9 @@
         <label>Introduce el incremento: </label>
         <input type="text" id="cajaIncremento" class="form-control">
         <br><br>
-        <button class="btn btn-warning">Realizar incremento</button>
+        <button class="btn btn-warning" id="incremento">Realizar incremento</button>
         <br><br>
-        <button class="btn btn-success">Mostrar empleados en funcion de empleo seleccionado</button>
+        <button class="btn btn-success" id="mostrar">Mostrar empleados en funcion de empleo seleccionado</button>
         <br><br>
         <table id="empleados" class="table table-striped" cellpadding="10">
             <thead class="table-danger">
@@ -37,31 +37,78 @@
     <script>
         var api="https://apiempleadosaction.azurewebsites.net";
         $(document).ready(function(){
+            // cargarEmpleados();
+            cargarOficios();
+
+            $("#mostrar").click(function(){
+                    var oficios=$("#oficios").val();
+                    var request="/api/Empleados/GetEmpleadosOficio/empleadosoficio/"+oficios;
+                    $.ajax({
+                        type: "GET",
+                        url: api+request,
+                        success: function (data) {
+                            var html="";
+                            $.each(data, function (index,oficio) { 
+                                html+="<tr>";
+                                html+="<td>"+oficio.apellido+"</td>";
+                                html+="<td>"+oficio.oficio+"</td>";
+                                html+="<td>"+oficio.salario+"</td>";
+                                html+="<td>"+oficio.director+"</td>";
+                                html+="</tr>";  
+                            });
+                            $("#empleados tbody").html(html);
+                        }
+                    });
+                });
+
+            $("#incremento").click(function(){
+                var oficios=$("#oficios").val();
+                var dinero=parseInt($("#cajaIncremento").val());
+                var requestSalario="/api/Empleados/IncrementarSalarioOficios/"+oficios+"/"+dinero;
+                var requestOficios="/api/Empleados/GetEmpleadosOficio/empleadosoficio/"+oficios;
+                $.ajax({
+                    type: "PUT",
+                    url: api+requestSalario,
+                    success: function (data) {
+                        $.ajax({
+                    type: "GET",
+                    url: api+requestOficios,
+                    success: function (data) {
+                    var html="";
+                        $.each(data, function (index,oficio) { 
+                            html+="<tr>";
+                            html+="<td>"+oficio.apellido+"</td>";
+                            html+="<td>"+oficio.oficio+"</td>";
+                            html+="<td class='text-success font-weight-bold'>"+oficio.salario+"</td>";
+                            html+="<td>"+oficio.director+"</td>";
+                            html+="</tr>";  
+                        });
+                        $("#empleados tbody").html(html);
+                    }
+                });
+                    }
+                });
+
+                
+            });
             
         })
 
-        function cargarEmpleados(){
-            var request="/api/Empleados";
+
+        function cargarOficios(){
+            var request="/api/Empleados/GetOficios/oficios";
             $.ajax({
                 type: "GET",
                 url: api+request,
                 success: function (data) {
-                    var html="";
-                    $.each(data, function(index,empleado){
-                        var apellido=empleado.apellido;
-                        var oficio=empleado.oficio;
-                        var salario=empleado.salario;
-                        var director=empleado.director;
-
-                        html+="<tr>";
-                        
+                    $.each(data, function (index, oficio) { 
+                         var option =$("<option>", {"text":oficio, "value":oficio, "class":"form-control"});
+                         $("#oficios").append(option);
                     });
-                    
-
-
                 }
             });
         }
+
     </script>
 </body>
 </html>
