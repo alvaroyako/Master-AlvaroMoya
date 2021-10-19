@@ -1,4 +1,4 @@
-import duro from '/Programacion-AlvaroMoyaHerraiz/REACT/segundoreact/src/assets/images/duro.jpg';
+import duro from './assets/images/duro.jpg';
 
 function SumarNumeros() {
 
@@ -13,7 +13,8 @@ function SumarNumeros() {
         Suma de dos numeros
       </h1>
       <button onClick={() => Sumar(7,3)}>Suma los numeros</button>
-      <img src={duro}></img>
+      <br/>
+      <img src={duro} className='App-logo'></img>
     </div>
   );
 }
