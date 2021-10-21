@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './Components/App/App';
 import Contador from './Components/Contador/Contador';
+import DibujosComplejos from './Components/DibujosComplejos/DibujosComplejos';
+import Deportes from './Components/Deportes/Deportes';
+import Numeros from './Components/Numeros/Numeros';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <div className='App'>
-    <Contador Inicio="25"/>
-    <Contador Inicio="22"/>
+   <Numeros/>
   </div>,
   document.getElementById('root')
 );
