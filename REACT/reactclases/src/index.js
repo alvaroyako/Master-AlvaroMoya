@@ -18,10 +18,11 @@ import EjemploSimple from './Components/Formulario/EjemploSimple';
 import Collatz from './Components/Formulario/Collatz';
 import Multiplicar from './Components/Formulario/Multiplicar';
 import Multiplicar2 from './Components/Formulario/Multiplicar2';
+import SeleccionMultiple from './Components/Formulario/SeleccionMultiple';
 
 ReactDOM.render(
   <div className='App'>
-    <Multiplicar2></Multiplicar2>
+    <SeleccionMultiple></SeleccionMultiple>
   </div>,
   document.getElementById('root')
 );
