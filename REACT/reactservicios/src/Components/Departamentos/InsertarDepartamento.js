@@ -40,6 +40,7 @@ export default class InsertarDepartamento extends Component {
     render() {
         if(this.state.status==true){
                 return(
+                    
                     <Redirect to="/departamentos"></Redirect>
                 );
         }
