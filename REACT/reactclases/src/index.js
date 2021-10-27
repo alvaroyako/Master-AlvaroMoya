@@ -22,7 +22,7 @@ import SeleccionMultiple from './Components/Formulario/SeleccionMultiple';
 
 ReactDOM.render(
   <div className='App'>
-    <SeleccionMultiple></SeleccionMultiple>
+    <Router></Router>
   </div>,
   document.getElementById('root')
 );
