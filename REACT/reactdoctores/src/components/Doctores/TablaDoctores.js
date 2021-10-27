@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import Global from '../../Global'
+import Swal from 'sweetalert2'
 
 export default class TablaDoctores extends Component {
 
@@ -20,6 +21,7 @@ export default class TablaDoctores extends Component {
             })
         })
     }
+
 
     componentDidMount=()=>{
         this.cargarDoctores();
@@ -51,8 +53,8 @@ export default class TablaDoctores extends Component {
                                     <td>{doc.salario}</td>
                                     <td>
 
-                                        <NavLink to={"/editardoctor/"+doc.idHospital+"/"+doc.apellido+"/"+doc.especialidad+"/"+doc.salario} className="btn btn-info">Editar</NavLink>
-
+                                        <NavLink to={"/editardoctor/"+doc.idDoctor+"/"+doc.idHospital+"/"+doc.apellido+"/"+doc.especialidad+"/"+doc.salario} className="btn btn-info">Editar</NavLink>
+                                        <NavLink to={"/deletedoctor/"+doc.idDoctor+"/"+doc.apellido} className="btn btn-danger">Eliminar</NavLink>
                                     </td>
                                 </tr>
                             );

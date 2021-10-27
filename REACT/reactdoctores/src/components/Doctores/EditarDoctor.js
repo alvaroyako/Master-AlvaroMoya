@@ -4,6 +4,7 @@ import Global from '../../Global';
 import { Redirect } from 'react-router';
 
 export default class EditarDoctor extends Component {
+    cajaIdD=React.createRef();
     cajaIdH=React.createRef();
     cajaApellido=React.createRef();
     cajaEspecialidad=React.createRef();
@@ -15,12 +16,14 @@ export default class EditarDoctor extends Component {
 
     editarDoctor=(e)=>{
         e.preventDefault();
+        var idD=parseInt(this.cajaIdD.current.value);
         var idH=parseInt(this.cajaIdH.current.value);
         var ape=this.cajaApellido.current.value;
         var esp=this.cajaEspecialidad.current.value;
         var sal=parseInt(this.cajaSalario.current.value);
 
         var doctores={
+            idDoctor:idD,
             idHospital:idH,
             apellido :ape,
             especialidad:esp,
@@ -46,8 +49,11 @@ export default class EditarDoctor extends Component {
 
                 <form style={{width:"500px", display:"table", margin:"0 auto"}} onSubmit={this.editarDoctor}>
 
+                    <label>Id del doctor</label>
+                    <input type="number" className="form-control" ref={this.cajaIdD} defaultValue={this.props.iddoctor} disabled/>
+
                     <label>Id del hospital</label>
-                    <input type="number" className="form-control" ref={this.cajaIdH} defaultValue={this.props.id}/>
+                    <input type="number" className="form-control" ref={this.cajaIdH} defaultValue={this.props.idhospital}/>
 
                     <label>Apellido</label>
                     <input type="text" className="form-control" ref={this.cajaApellido} defaultValue={this.props.apellido}/>
