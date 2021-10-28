@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>    
+    <div id="nav"></div>
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function() {
+            $("#nav").load("./Principal.html"); //En el div con id navbar carga el contenido de principal.html
+        });
+    </script>
+    
+    <div class="container" id="detallesequipo">
+        <script>//SCRIPT CARGAR DETALLES EQUIPOS
+            urlapi="https://apichampions.azurewebsites.net"
+            $(document).ready(function(){
+                cargarDetallesEquipo();
+            })
+            function cargarDetallesEquipo(){
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const params = Object.fromEntries(urlSearchParams.entries());           //Con estas dos lineas recupero la id del equipo mediante el parametro
+                
+                var idEquipo =  params.idEquipo;
+                var request = "/api/Equipos/"+idEquipo;
+             
+                 $.ajax({
+                     "url": urlapi+request,
+                     "method": "GET",
+                         success: function(data){
+                      
+                            console.log(data)
+                            var h1nom = $("<h1>", {
+                                "text": data.nombre,
+                            })
+                            var img = $("<img>", {
+                                "src": data.imagen,
+                                "height": "250px",
+                                "width": "180px"
+                            })
+                            var h2cha = $("<h2>", {
+                                "text": "Champions: "+data.champions
+                            })
+                            var h3desc = $("<h3>", {
+                                "text": data.descripcion
+                            })
+                            $("#detallesequipo").append(h1nom);
+                            $("#detallesequipo").append(img);
+                            $("#detallesequipo").append(h2cha);
+                            $("#detallesequipo").append(h3desc);                        
+                  }
+                 })
+            }
+        </script>       
+    </div>
+    <div class="container" id="linktablajugadores">
+        <script>
+            $(document).ready(function(){
+                crearLinkTablaJugadores();
+                function crearLinkTablaJugadores() {
+                    const urlSearchParams = new URLSearchParams(window.location.search);
+                    const params = Object.fromEntries(urlSearchParams.entries());
+                    var linktablajugadores = $("<a>", {
+                        "text": "Tabla Jugadores",
+                        "href": "TablaJugadores.html?idEquipo="+params.idEquipo, //Mandamos la id del equipo como parametro
+                        "class": "btn btn-info"
+                    })
+              
+                    $("#linktablajugadores").append(linktablajugadores)
+                }
+            })
+        </script>
+    </div>
+</body>
+</html>

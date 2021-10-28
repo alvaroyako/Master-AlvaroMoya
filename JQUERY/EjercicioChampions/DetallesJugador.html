@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function() {
+            $("#nav").load("./Principal.html");
+        });
+    </script>
+    <div id="nav"></div>
+    <div class="container" id="detallesjugador">
+        <script>//SCRIPT CARGAR JUGADOR
+      urlapi="https://apichampions.azurewebsites.net"
+                    $(document).ready(function(){
+                        cargarJugador();
+                    })
+                    function cargarJugador(){
+                        const urlSearchParams = new URLSearchParams(window.location.search);
+                         const params = Object.fromEntries(urlSearchParams.entries());
+                        //Recupero el id de equipo de la url para hacer la peticion
+                         var idJugador =  params.idJugador;
+
+                        var request = "/api/Jugadores/"+idJugador;
+                     
+                        $.ajax({
+                            "url": urlapi+request,
+                            "method": "GET",
+                            success: function(data){
+                                console.log(data);                                                                  
+                                    var h1nom = $("<h1>", {
+                                        "text": data.nombre
+                                    });
+                                    var img = $("<img>", {
+                                        "src": data.imagen
+                                    })
+                                    var h2pos = $("<h2>", {
+                                        "text": data.posicion
+                                    })
+                                    var h2fec = $("<h2>", {
+                                        "text": "Fecha Nacimiento: "+data.fechaNacimiento
+                                    })
+                                    var h2pais = $("<h2>", {
+                                        "src": data.imagen
+                                    })
+                                    var botonvolver = $("<a>", {
+                                        "href": "TablaJugadores.html?idEquipo="+data.idEquipo,
+                                        "class": "btn btn-warning",
+                                        "text": "Volver"
+                                    })
+                                   $("#detallesjugador").append(h1nom);
+                                   $("#detallesjugador").append(img);
+                                   $("#detallesjugador").append(h2pos);
+                                   $("#detallesjugador").append(h2fec);
+                                   $("#detallesjugador").append(h2pais);
+                                   $("#detallesjugador").append(botonvolver);
+                             
+                                
+                            }
+                        })
+                    }
+        </script>
+        
+    </div>
+</body>
+</html>

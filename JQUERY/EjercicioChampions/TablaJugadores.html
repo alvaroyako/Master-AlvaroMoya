@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function() {
+            $("#nav").load("./Principal.html");//En el div con id nav carga el contenido de principal.html
+        });
+    </script>
+    <div id="nav"></div>
+    <div class="container">
+        <table className="table" id="tablajugadores">
+            <thead>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Detalles</th>
+            </thead>
+            <tbody>
+                <script>//SCRIPT CARGAR JUGADORES
+                    urlapi="https://apichampions.azurewebsites.net"
+                    $(document).ready(function(){
+                        cargarJugadores();
+                    })
+                    function cargarJugadores(){
+                        const urlSearchParams = new URLSearchParams(window.location.search);
+                         const params = Object.fromEntries(urlSearchParams.entries());
+                        //Recupero el id de equipo de la url para hacer la peticion
+                         var idEquipo =  params.idEquipo;
+
+                        var request = "/api/Jugadores/JugadoresEquipo/"+idEquipo;
+                     
+                        $.ajax({
+                            "url": urlapi+request,
+                            "method": "GET",
+                            success: function(data){
+                                console.log(data);
+                                $.each(data, function(index, jug){
+                                    
+                                    var tr = $("<tr>", {});
+                                    var tdnom = $("<td>", {
+                                        "text": jug.nombre
+                                    })
+                                    var tdimg = $("<td>", {
+                                    })
+                                    var tddet = $("<td>", {
+                                    })
+                                    var img = $("<img>", {
+                                        "src": jug.imagen
+                                    })
+                                    var linkdetalles = $("<a>", {
+                                        "href": "DetallesJugador.html?idJugador="+jug.idJugador,
+                                        "class": "btn btn-warning",
+                                        "text": "Detalles"
+                                    })
+                                   tr.append(tdnom);
+                                   tr.append(tdimg);
+                                   tr.append(tddet);
+                                   tdimg.append(img);
+                                   tddet.append(linkdetalles);
+                                                                             
+                                   $("#tablajugadores tbody").append(tr)
+                                })
+                                
+                            }
+                        })
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
