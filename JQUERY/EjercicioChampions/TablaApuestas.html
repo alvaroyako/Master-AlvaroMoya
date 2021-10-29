@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function() {
+            $("#nav").load("./Principal.html");
+        });
+    </script>
+    <div id="nav"></div>
+
+    <div class="container">
+        <h1>Tabla Apuestas</h1>
+        <a href="InsertarApuesta.html"
+                className="btn btn-info">
+                    Insertar Apuesta
+          </a>
+                <table class="table" id="tablaapuestas">
+                    <thead>
+                        <th>Usuario</th>
+                        <th>Resultado</th>
+                        <th>Fecha</th>
+                    </thead>
+                    <tbody>
+                        <script>//SCRIPT CARGAR APUESTAS
+                            urlapi="https://apichampions.azurewebsites.net"
+                            $(document).ready(function(){
+                                cargarApuestas();
+                            })
+                            function cargarApuestas(){
+                                var request = "/api/Apuestas";
+                             
+                                $.ajax({
+                                    "url": urlapi+request,
+                                    "method": "GET",
+                                    success: function(data){
+                                        $.each(data, function(index, apu){
+                                            
+                                            var tr = $("<tr>", {});
+                                            var tdusu = $("<td>", {
+                                                "text": apu.usuario
+                                            })
+                                            var tdres = $("<td>", {
+                                                "text": apu.resultado
+                                            })
+                                            var tdfec = $("<td>", {
+                                                "text": apu.fecha
+                                            })
+                                           tr.append(tdusu);
+                                           tr.append(tdres);
+                                           tr.append(tdfec);                                          
+                                           $("#tablaapuestas tbody").append(tr)
+                                        })
+                                        
+                                    }
+                                })
+                            }
+                        </script>
+                    </tbody>
+                </table>
+            </div>
+    </div>
+</body>
+</html>

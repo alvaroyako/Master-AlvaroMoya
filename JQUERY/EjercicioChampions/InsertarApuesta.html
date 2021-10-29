@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function() {
+            $("#nav").load("./Principal.html");
+        });
+    </script>
+    <div id="nav"></div>
+    <div class="container" id="insertarapuesta">
+        <h1 class="py-5">Insertar Apuesta</h1>
+
+            <div className="form-group row">
+                <label>
+                    Usuario
+                </label>
+                <input type="text"
+                id="cajausuario"
+               />
+            </div>
+            <div className="form-group row">
+                <label>
+                    Real Madrid
+                </label>
+                <input type="text"
+                id="cajanum1"
+                />
+            </div>
+            <div className="form-group row">
+                <label>
+                    Atlético de Madrid
+                </label>
+                <input type="text"
+                id="cajanum2"
+                />
+            </div>
+            <div className="form-group row">
+                <label>
+                    Fecha
+                </label>
+                <input type="text"
+                id="cajafecha"
+                />
+            </div>
+            <button id="insertar" class="btn btn-info">
+                Nueva apuesta
+            </button>
+
+        <a class="btn btn-success" href="TablaApuestas.html">Volver</a>
+        <script> //SCRIPT INSERTAR APUESTA
+        var urlapi = "https://apichampions.azurewebsites.net"
+            $("#insertar").click(function(){
+                var request = "/api/Apuestas";
+                console.log("dentro de insertar hosp");
+                
+                var usu = $("#cajausuario").val();
+                var resul = $("#cajanum1").val()+"-"+$("#cajanum2").val();
+                var fec = $("#cajafecha").val();
+
+                var apuesta = new Object();
+                apuesta.idApuesta = 0;
+                apuesta.usuario = usu;
+                apuesta.resultado = resul;
+                apuesta.fecha = fec;
+                console.log(apuesta);
+
+                var json = JSON.stringify(apuesta);
+                console.log(json);
+                $.ajax({
+                    "url": urlapi+request,
+                    "method": "POST",
+                    "data": json,
+                    "contentType": "application/JSON",
+                    success : function(){
+                        console.log("apuesta insertada");
+                        
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+</html>
