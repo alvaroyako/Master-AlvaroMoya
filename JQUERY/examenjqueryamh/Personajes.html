@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script src="./js/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <script>//SCRIPT CARGAR NAVBAR
+        $(document).ready(function () {
+            $("#nav").load("./Principal.html");//En el div con id nav carga el contenido de principal.html
+        });
+    </script>
+    <div id="nav"></div>
+    <div id="contenido" class="container">
+        <table class="table table-bordered" id="tablapersonajes">
+            <thead>
+                <th>Personaje</th>
+                <th>Imagen</th>
+            </thead>
+            <tbody>
+                <script>//SCRIPT CARGAR JUGADORES
+                    urlapi = "https://apiseriespersonajes.azurewebsites.net/"
+                    $(document).ready(function () {
+                        const urlSearchParams = new URLSearchParams(window.location.search);
+                        const params = Object.fromEntries(urlSearchParams.entries());
+                        //Recupero el id de equipo de la url para hacer la peticion
+                        var idSerie = params.idSerie;
+
+                        var botonvolver = $("<a>", {
+                            "href": "InfoSerie.html?idSerie=" + idSerie,
+                            "class": "btn btn-warning",
+                            "text": "Volver"
+                        })
+
+                        $("#contenido").append(botonvolver);
+
+
+
+                        cargarPersonajes();
+                    })
+                    function cargarPersonajes() {
+                        const urlSearchParams = new URLSearchParams(window.location.search);
+                        const params = Object.fromEntries(urlSearchParams.entries());
+                        //Recupero el id de equipo de la url para hacer la peticion
+                        var idSerie = params.idSerie;
+
+                        var request = "/api/Series/PersonajesSerie/" + idSerie
+
+
+
+                        $.ajax({
+                            "url": urlapi + request,
+                            "method": "GET",
+                            success: function (data) {
+                                console.log(data);
+                                $.each(data, function (index, pj) {
+
+                                    var tr = $("<tr>", {});
+                                    var tdnom = $("<td>", {
+                                        "text": pj.nombre
+                                    })
+                                    var tdimg = $("<td>", {
+                                    })
+
+                                    var img = $("<img>", {
+                                        "src": pj.imagen,
+                                        "height": "200px",
+                                        "width": "300px"
+                                    })
+
+
+
+                                    tr.append(tdnom);
+                                    tr.append(tdimg);
+                                    tdimg.append(img);
+
+                                    $("#tablapersonajes tbody").append(tr)
+
+                                })
+
+                            }
+                        })
+                    }
+                </script>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
