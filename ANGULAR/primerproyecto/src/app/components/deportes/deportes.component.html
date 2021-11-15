@@ -1,0 +1,33 @@
+<h1 style="color: blueviolet;">Ejemplo Directivas Angular</h1>
+
+<h2>Estilos con ngStyle</h2>
+<ul>
+    <li *ngFor="let numero of numeros; let i=index" [ngClass]="{
+     estilopar:numero%2==0,
+     estiloimpar:numero%2==1
+    }">
+        {{numero}}</li>
+</ul>
+
+<h2>Numero de deportes {{deportes.length}}</h2>
+
+<div *ngIf="deportes.length < 7;then condiciontrue;else condicionelse">
+</div>
+
+<ng-template #condicionelse>
+    <p>Tienes mas de 7 deportes</p>
+</ng-template>
+
+<ng-template #condiciontrue>
+    <p>Tienes menos de 7 deportes</p>
+</ng-template>
+
+<h4 style="color: crimson;">
+    El primer deporte es {{ deportes[0] }}
+</h4>
+
+<ul>
+    <li *ngFor="let deporte of deportes; let i=index">
+        Posicion:{{i}}, Deporte: {{deporte}}
+    </li>
+</ul>
