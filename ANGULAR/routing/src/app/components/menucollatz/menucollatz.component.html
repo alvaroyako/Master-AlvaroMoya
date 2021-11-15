@@ -1,0 +1,7 @@
+<div>
+    <ul class="menu">
+        <li *ngFor="let num of array">
+            <a [routerLink]="['/collatz/',num]">{{num}}</a>
+        </li>
+    </ul>
+</div>

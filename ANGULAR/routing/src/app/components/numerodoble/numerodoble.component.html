@@ -1,0 +1,15 @@
+<h1>Ejemplo rutas parametros Angular</h1>
+<hr>
+<button (click)="redirect(66)">Enviar 66</button>
+<button (click)="redirect(88)">Enviar 88</button>
+<button (click)="redirect(69)">Enviar 69</button>
+<hr>
+<div *ngIf="numero">
+    <h1 style="color: royalblue;">
+        El doble de {{numero}} es <span style="color: rebeccapurple;">{{doble}}</span>
+    </h1>
+</div>
+
+<div *ngIf="!numero">
+    <h1 style="color: red;">No hemos recibido parametros</h1>
+</div>
