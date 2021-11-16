@@ -2,5 +2,10 @@
     <h2 style="color: blueviolet;">{{comic.nombre}}</h2>
     <img src={{comic.imagen}} alt="" style="width: 300px; height: 400px;">
     <h2><i>{{comic.descripcion}}</i></h2>
+    <button style="background-color: goldenrod;" (click)="seleccionarFavoritoHijo()">Favorito</button>
+
+    <button (click)="modificarComicHijo()" style="background-color: dodgerblue;">Modificar Comic</button>
+
+    <button (click)="eliminarComicHijo()" style="background-color: firebrick;">Eliminar comic</button>
     <hr>
 </div>
