@@ -28,7 +28,7 @@ export default class Camara extends Component {
                 <hr/>
                 <img src={this.state.imagen} alt=""/>
                 <br/>
-                <a href={this.state.imagen} download="prueba">Descargar captura</a>
+                <a href={this.state.imagen} download="captura">Descargar captura</a>
             </div>
         )
     }
