@@ -20,7 +20,19 @@
       <div class="collapse navbar-collapse" id="navbarsExample04">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <router-link to="/serie" class="nav-link">Ejemplo</router-link>
+            <router-link to="/home" class="nav-link">Home</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/nuevopj" class="nav-link">Nuevo Personaje</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/modificarpj" class="nav-link">Modificar Personaje</router-link>
+          </li>
+
+          <li class="nav-item">
+            <router-link to="/home" class="nav-link">Modificar personaje</router-link>
           </li>
 
           <li class="nav-item dropdown">
