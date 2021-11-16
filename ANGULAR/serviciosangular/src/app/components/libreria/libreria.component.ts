@@ -8,10 +8,25 @@ import { Comic } from 'src/app/Models/comic';
 })
 export class LibreriaComponent implements OnInit {
   public comics: Array<Comic>
-  public comic!: Comic
+  public comicFav !: Comic
   @ViewChild("cajanombre") cajanombre!: ElementRef;
   @ViewChild("cajaimagen") cajaimagen!: ElementRef;
   @ViewChild("cajadescripcion") cajadescripcion!: ElementRef;
+
+  seleccionarFavorito(event: Comic): void {
+    this.comicFav = event
+  }
+
+  eliminarComic(event: number): void {
+    this.comics.splice(event, 1)
+  }
+
+  modificarComic(event: number): void {
+    var nombre = this.cajanombre.nativeElement.value
+    var imagen = this.cajaimagen.nativeElement.value
+    var descripcion = this.cajadescripcion.nativeElement.value
+    this.comics[event] = new Comic(nombre, imagen, descripcion)
+  }
 
   constructor() {
     this.comics = [
@@ -44,7 +59,7 @@ export class LibreriaComponent implements OnInit {
   }
 
   nuevoComic() {
-    this.comic = new Comic = {
+    var comic: Comic = {
       nombre: this.cajanombre.nativeElement.value,
       imagen: this.cajaimagen.nativeElement.value,
       descripcion: this.cajadescripcion.nativeElement.value,
@@ -52,6 +67,8 @@ export class LibreriaComponent implements OnInit {
 
     this.comics.push(comic)
   }
+
+
 
   ngOnInit(): void {
   }

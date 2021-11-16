@@ -1,0 +1,22 @@
+<h1>Buscador empleados</h1>
+
+<form #formEmpleados="ngForm">
+    <label>Salario: </label>
+    <input type="number" class="form-control" name="cajasalario" #cajasalario />
+    <button class="btn btn-outline-info" (click)="mostrarEmpleados()">Buscar</button>
+</form>
+
+<table *ngIf="empleados" style="display:table;width:70%;margin: 0 auto;" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Apellido</th>
+            <th>Salario</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empleados">
+            <td>{{emp.apellido}}</td>
+            <td>{{emp.salario}}</td>
+        </tr>
+    </tbody>
+</table>

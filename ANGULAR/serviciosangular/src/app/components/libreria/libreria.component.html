@@ -1,6 +1,12 @@
 <h1>Libreria</h1>
 <div>
 
+    <div style="background-color: black; color:goldenrod;" *ngIf="comicFav">
+        <h2 style="color: goldenrod;">{{comicFav.nombre}}</h2>
+        <img src={{comicFav.imagen}} alt="" style="width: 300px; height: 400px;">
+        <h2><i>{{comicFav.descripcion}}</i></h2>
+    </div>
+
     <form #comicForm="ngForm">
         <label>Nombre: </label>
         <input type="text" name="cajanombre" #cajanombre />
@@ -17,5 +23,6 @@
 </div>
 <hr />
 <div *ngFor="let comic of comics;let i=index;">
-    <app-comic [comic]="comic" [index]="i"></app-comic>
+    <app-comic [comic]="comic" [index]="i" (seleccionarFavorito)="seleccionarFavorito($event)"
+        (eliminarComic)="eliminarComic($event)" (modificarComic)="modificarComic($event)"></app-comic>
 </div>
