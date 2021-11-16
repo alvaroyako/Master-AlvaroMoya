@@ -13,51 +13,22 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link item" [routerLink]="['/libreria']">Libreria</a>
+                    <a class="nav-link item" [routerLink]="['/nuevopj']">Nuevo Personaje</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link item" [routerLink]="['/comicsinyeccion']">Comics Inyeccion</a>
+                    <a class="nav-link item" [routerLink]="['/modificarpj']">Modificar Personaje</a>
                 </li>
-
-                <li class="nav-item">
-                    <a class="nav-link item" [routerLink]="['/personas']">Personas Api</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link item" [routerLink]="['/salarios']">Salarios</a>
-                </li>
-
                 
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-bs-toggle="dropdown"
                         aria-expanded="false">Series</a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdown04">
-                        <li>
-                            Ejemplo
-                        </li>
-                    </ul>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a [routerLink]="['/detalles/',serie.idSerie]" *ngFor="let serie of series" class="dropdown-item">{{serie.nombre}}</a>
+                    </div>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-
-
-
-
-
-
-
-
-
-
-<!-- <ul class="menu">
-    <li>
-        <a [routerLink]="['/home']">Home</a>
-    </li>
-    <li>
-        <a [routerLink]="['/libreria']">Libreria</a>
-    </li>
-</ul> -->
