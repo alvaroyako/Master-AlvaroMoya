@@ -18,6 +18,8 @@ import { EmpleadossalarioComponent } from './components/empleadossalario/emplead
 import { Empleado2Service } from './services/empleado2.service';
 import { Empleado2 } from './Models/empleado2';
 import { EmpleadosoficioComponent } from './components/empleadosoficio/empleadosoficio.component';
+import { DetalleempleadoComponent } from './components/detalleempleado/detalleempleado.component';
+import { ListadoempleadosComponent } from './components/listadoempleados/listadoempleados.component';
 
 
 
@@ -32,6 +34,8 @@ import { EmpleadosoficioComponent } from './components/empleadosoficio/empleados
     PersonasapiComponent,
     EmpleadossalarioComponent,
     EmpleadosoficioComponent,
+    DetalleempleadoComponent,
+    ListadoempleadosComponent,
 
   ],
   imports: [

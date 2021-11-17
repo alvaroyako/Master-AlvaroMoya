@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "0ca8cf65-40cf-4c44-899d-bc2a11f789af"
+    "analytics": "c8dba336-986b-42d7-a152-3b8263cbf4bc"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "practicaseries": {
+    "angularcruddepartamentos": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/practicaseries",
+            "outputPath": "dist/angularcruddepartamentos",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "practicaseries:build:production"
+              "browserTarget": "angularcruddepartamentos:build:production"
             },
             "development": {
-              "browserTarget": "practicaseries:build:development"
+              "browserTarget": "angularcruddepartamentos:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "practicaseries:build"
+            "browserTarget": "angularcruddepartamentos:build"
           }
         },
         "test": {
@@ -105,5 +105,5 @@
       }
     }
   },
-  "defaultProject": "practicaseries"
+  "defaultProject": "angularcruddepartamentos"
 }

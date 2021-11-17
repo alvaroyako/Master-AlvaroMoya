@@ -14,6 +14,18 @@ export class EmpleadoService {
     return this._http.get(url)
   }
 
+  getEmpleados(): Observable<any> {
+    var request = "/api/empleados";
+    var url = Global.urlempleados + request;
+    return this._http.get(url)
+  }
+
+  findEmpleado(idempleado: string): Observable<any> {
+    var request = "api/empleados/" + idempleado;
+    var url = Global.urlempleados + request;
+    return this._http.get(url)
+  }
+
 
 
 }

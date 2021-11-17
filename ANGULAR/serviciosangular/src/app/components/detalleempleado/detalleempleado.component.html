@@ -1,0 +1,8 @@
+<h1>Detalle empleados</h1>
+<a class="btn btn-outline-info" [routerLink]="['/empleados']">Volver</a>
+<dl *ngIf="empleado">
+    <dt>Apellido: {{empleado.apellido}}</dt>
+    <dd>Oficio: {{empleado.oficio}}</dd>
+    <dd>Salario: {{empleado.salario}}</dd>
+    <dd>Departamento: {{empleado.departamento}}</dd>
+</dl>
