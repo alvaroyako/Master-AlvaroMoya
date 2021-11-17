@@ -3,12 +3,12 @@
     <div class="card mt-5" style="width: 18rem; margin: 0 auto">
       <img :src="serie.imagen" alt="Card image cap" />
       <div class="card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 class="card-title">{{serie.nombre}}</h5>
         <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
+          Puntuacion: {{serie.puntuacion}}
         </p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <hr>
+        <router-link :to="'/personajes/'+this.id" class="btn btn-primary">Personajes</router-link>
       </div>
     </div>
   </div>
@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       id: 0,
-      serie: null,
+      serie: {},
     };
   },
   methods: {
