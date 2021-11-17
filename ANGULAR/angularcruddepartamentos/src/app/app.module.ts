@@ -6,11 +6,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { DepartamentoService } from './services/departamento.service';
+import { HomeComponent } from './components/home/home.component';
+import { InsertardepartamentoComponent } from './components/insertardepartamento/insertardepartamento.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    HomeComponent,
+    InsertardepartamentoComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +23,7 @@ import { MenuComponent } from './components/menu/menu.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [appRoutingProviders],
+  providers: [appRoutingProviders, DepartamentoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

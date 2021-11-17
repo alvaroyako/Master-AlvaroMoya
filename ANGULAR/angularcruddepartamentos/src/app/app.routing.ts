@@ -2,11 +2,12 @@ import { Routes, RouterModule } from "@angular/router";
 import { ModuleWithProviders } from "@angular/core";
 
 import { HomeComponent } from "./components/home/home.component";
-
+import { InsertardepartamentoComponent } from "./components/insertardepartamento/insertardepartamento.component";
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
     { path: "home", component: HomeComponent },
+    { path: "insertar", component: InsertardepartamentoComponent },
 ];
 
 export const appRoutingProviders: any[] = [];
