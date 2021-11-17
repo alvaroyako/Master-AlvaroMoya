@@ -15,6 +15,9 @@ import { PersonasapiComponent } from './components/personasapi/personasapi.compo
 import { ServicepersonasService } from './services/servicepersonas.service';
 import { EmpleadoService } from './services/empleado.service';
 import { EmpleadossalarioComponent } from './components/empleadossalario/empleadossalario.component';
+import { Empleado2Service } from './services/empleado2.service';
+import { Empleado2 } from './Models/empleado2';
+import { EmpleadosoficioComponent } from './components/empleadosoficio/empleadosoficio.component';
 
 
 
@@ -28,6 +31,7 @@ import { EmpleadossalarioComponent } from './components/empleadossalario/emplead
     ComicsinyecionComponent,
     PersonasapiComponent,
     EmpleadossalarioComponent,
+    EmpleadosoficioComponent,
 
   ],
   imports: [
@@ -36,7 +40,7 @@ import { EmpleadossalarioComponent } from './components/empleadossalario/emplead
     FormsModule,
     HttpClientModule
   ],
-  providers: [appRoutingProviders, ComicsService, ServicepersonasService, EmpleadoService],
+  providers: [appRoutingProviders, ComicsService, ServicepersonasService, EmpleadoService, Empleado2Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

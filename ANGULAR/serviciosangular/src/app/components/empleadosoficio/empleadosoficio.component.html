@@ -1,0 +1,30 @@
+<h1>Empleados Oficios</h1>
+
+<form #formOficios="ngForm">
+    <label>Seleccione un oficio</label>
+    <select class="form-control" name="cajaoficio" #cajaoficio>
+        <option *ngFor="let oficio of oficios">{{oficio}}</option>
+    </select>
+    <button class="btn btn-outline-primary mt-3" (click)="cargarEmpleados()">Cargar tabla</button>
+</form>
+
+<table class="table table-bordered mt-4" *ngIf="empleados">
+    <thead>
+        <tr>
+            <th>Id Empleado</th>
+            <th>Apellido</th>
+            <th>Oficio</th>
+            <th>Salario</th>
+            <th>Departamento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of empleados">
+            <td>{{emp.idEmpleado}}</td>
+            <td>{{emp.apellido}}</td>
+            <td>{{emp.oficio}}</td>
+            <td>{{emp.salario}}</td>
+            <td>{{emp.departamento}}</td>
+        </tr>
+    </tbody>
+</table>

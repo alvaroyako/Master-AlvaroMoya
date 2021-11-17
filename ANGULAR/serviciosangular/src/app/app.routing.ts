@@ -6,6 +6,7 @@ import { LibreriaComponent } from "./components/libreria/libreria.component";
 import { ComicsinyecionComponent } from "./components/comicsinyecion/comicsinyecion.component";
 import { PersonasapiComponent } from "./components/personasapi/personasapi.component";
 import { EmpleadossalarioComponent } from "./components/empleadossalario/empleadossalario.component";
+import { EmpleadosoficioComponent } from "./components/empleadosoficio/empleadosoficio.component";
 
 
 
@@ -16,6 +17,7 @@ const appRoutes: Routes = [
     { path: "comicsinyeccion", component: ComicsinyecionComponent },
     { path: "personas", component: PersonasapiComponent },
     { path: "salarios", component: EmpleadossalarioComponent },
+    { path: "oficios", component: EmpleadosoficioComponent },
 ];
 
 export const appRoutingProviders: any[] = [];

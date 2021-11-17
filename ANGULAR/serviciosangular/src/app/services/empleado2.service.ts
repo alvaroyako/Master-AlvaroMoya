@@ -5,15 +5,19 @@ import { Global } from '../Global';
 
 
 @Injectable()
-export class EmpleadoService {
+export class Empleado2Service {
+
   constructor(private _http: HttpClient) { }
 
-  getEmpleadosSalario(salario: string): Observable<any> {
-    var request = "/api/Empleados/EmpleadosSalario/" + salario;
+  getEmpleadosOficio(oficio: string): Observable<any> {
+    var request = "/api/Empleados/EmpleadosOficio/" + oficio;
     var url = Global.urlempleados + request;
     return this._http.get(url)
   }
 
-
-
+  getOficios(): Observable<any> {
+    var request = "/api/Empleados/oficios";
+    var url = Global.urlempleados + request;
+    return this._http.get(url)
+  }
 }
