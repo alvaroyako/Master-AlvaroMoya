@@ -7,6 +7,8 @@ import { ListajugadoresComponent } from "./components/listajugadores/listajugado
 import { DetallesjugadorComponent } from "./components/detallesjugador/detallesjugador.component";
 import { ListaapuestasComponent } from "./components/listaapuestas/listaapuestas.component";
 import { RealizarapuestaComponent } from "./components/realizarapuesta/realizarapuesta.component";
+import { BusquedaComponent } from "./components/busqueda/busqueda.component";
+
 
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
@@ -16,6 +18,7 @@ const appRoutes: Routes = [
     { path: "detallesjugador/:idjugador", component: DetallesjugadorComponent },
     { path: "apuestas", component: ListaapuestasComponent },
     { path: "realizarapuesta", component: RealizarapuestaComponent },
+    { path: "busqueda/:nombre", component: BusquedaComponent },
 
 
 ];

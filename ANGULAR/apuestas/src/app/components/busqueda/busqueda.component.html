@@ -1,0 +1,22 @@
+<h1>Buscar jugadores</h1>
+
+<div class="text-center mt-5" *ngIf="jugadores">
+    <table class="table table-bordered" style="display: table;width: 50rem;margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Imagen</th>
+                <th>Detalles</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let jugador of jugadores">
+                <td>{{jugador.nombre}}</td>
+                <td><img src="{{jugador.imagen}}" alt=""></td>
+                <td><a [routerLink]="['/detallesjugador/',jugador.idJugador]" class="btn btn-danger">Detalles</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!--  -->

@@ -25,7 +25,10 @@
                             *ngFor="let equipo of equipos">{{equipo.nombre}}</a>
                     </div>
                 </li>
-
+                <form #buscarForm="ngForm" class="form-inline my-2 my-md-0 input-group" >
+                    <input class="form-control" type="text" placeholder="Buscar" name="nombre" #nombre>
+                    <button class="btn btn-outline-info" style="float: right;" (click)="buscarJugador()">Buscar</button>
+                </form>
             </ul>
         </div>
     </div>

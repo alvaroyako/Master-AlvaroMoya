@@ -53,4 +53,10 @@ export class ApuestasService {
     return this._http.post(url, json, { headers: header })
   }
 
+  buscarJugador(nombre:string): Observable<any> {
+    var request = "/api/Jugadores/BuscarJugadores/"+nombre;
+    var url = Global.urlapuestas2 + request;
+    return this._http.get(url)
+  }
+
 }

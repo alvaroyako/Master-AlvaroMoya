@@ -15,6 +15,7 @@ export class RealizarapuestaComponent implements OnInit {
   @ViewChild("cajaRM") cajaRM!: ElementRef
   @ViewChild("cajaAM") cajaAM!: ElementRef
   @ViewChild("cajafecha") cajafecha!: ElementRef
+  @ViewChild("imagen") imagen!: ElementRef
   constructor(private _service: ApuestasService, private _router: Router) { }
 
   realizarApuesta() {
@@ -27,6 +28,10 @@ export class RealizarapuestaComponent implements OnInit {
     this._service.realizarApuesta(apuesta).subscribe(response => {
       this._router.navigate(["/apuestas"]);
     })
+  }
+
+  prueba():void{
+    
   }
 
   ngOnInit(): void {
