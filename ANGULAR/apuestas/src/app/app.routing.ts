@@ -10,6 +10,7 @@ import { RealizarapuestaComponent } from "./components/realizarapuesta/realizara
 import { BusquedaComponent } from "./components/busqueda/busqueda.component";
 
 
+
 const appRoutes: Routes = [
     { path: "", component: HomeComponent },
     { path: "home", component: HomeComponent },
@@ -19,6 +20,8 @@ const appRoutes: Routes = [
     { path: "apuestas", component: ListaapuestasComponent },
     { path: "realizarapuesta", component: RealizarapuestaComponent },
     { path: "busqueda/:nombre", component: BusquedaComponent },
+    
+
 
 
 ];

@@ -26,6 +26,7 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
     ListaapuestasComponent,
     RealizarapuestaComponent,
     BusquedaComponent,
+  
   ],
   imports: [
     BrowserModule,
