@@ -1,0 +1,26 @@
+<h1>Apuestas</h1>
+
+<div *ngIf="!apuestas">
+    <h1 class="text-danger">Loading...</h1>
+</div>
+
+<div class="text-center" *ngIf=" apuestas">
+    <a [routerLink]="['/realizarapuesta']" class="btn btn-danger mb-4">Realizar apuesta</a>
+    <h1 class="text-danger">Local: Real Madrid, Visitante: Atletico de Madrid</h1>
+    <table class=" table table-bordered table-info" style="display: table;width: 50rem;margin: 0 auto;">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Resultado</th>
+                <th>Fecha</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let apuesta of apuestas">
+                <td>{{apuesta.usuario}}</td>
+                <td>{{apuesta.resultado}}</td>
+                <td>{{apuesta.fecha}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

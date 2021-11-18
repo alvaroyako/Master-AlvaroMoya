@@ -1,0 +1,19 @@
+<h1>Realizar apuestas</h1>
+
+<div class="text-center" style="display: table;width: 30rem;margin: 0 auto;">
+    <form #realizarForm="ngForm">
+        <label>Usuario: </label>
+        <input class="form-control" type="text" name="cajanombre" #cajanombre>
+
+        <label>Real Madrid: </label>
+        <input class="form-control" type="number" name="cajaRM" #cajaRM>
+
+        <label>Atletico de Madrid: </label>
+        <input class="form-control" type="number" name="cajaAM" #cajaAM>
+
+        <label>Fecha: </label>
+        <input class="form-control" type="date" name="cajafecha" #cajafecha>
+
+        <button (click)="realizarApuesta()" class="btn btn-primary mt-5">Apostar</button>
+    </form>
+</div>

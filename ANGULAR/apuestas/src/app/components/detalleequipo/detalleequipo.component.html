@@ -1,0 +1,18 @@
+<h1>Detalles equipos</h1>
+
+<div *ngIf="!equipo">
+    <h1 class="text-danger">Loading...</h1>
+</div>
+
+<div class="card mt-5 text-center" style="width: 45rem;display: table;margin: 0 auto;" *ngIf="equipo">
+    <div class="card-header">
+        {{equipo.nombre}}
+    </div>
+    <img class="card-img-top" style="width: 100px; height: 150px;" src="{{equipo.imagen}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Champions: {{equipo.champions}}</h5>
+        <p class="card-text">{{equipo.descripcion}}</p>
+        <a [routerLink]="['/jugadores',equipo.idEquipo]" class="btn btn-primary">Ver jugadores</a>
+        <a [routerLink]="['/home']" class="btn btn-danger">Volver</a>
+    </div>
+</div>

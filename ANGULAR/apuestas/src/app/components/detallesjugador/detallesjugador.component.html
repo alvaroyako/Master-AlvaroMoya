@@ -1,0 +1,18 @@
+<h1>Detalles jugador</h1>
+
+<div *ngIf="!jugador">
+    <h1 class="text-danger">Loading...</h1>
+</div>
+
+<div class="card mt-5 text-center" style="width: 45rem;display: table;margin: 0 auto;" *ngIf="jugador">
+    <div class="card-header">
+        {{jugador.nombre}}
+    </div>
+    <img class="card-img-top" style="width: 100px; height: 150px;" src="{{jugador.imagen}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Posicion: {{jugador.posicion}}</h5>
+        <p class="card-text">Fecha Nacimiento: {{jugador.fechaNacimiento}}</p>
+        <p class="card-text">Pais: {{jugador.pais}}</p>
+        <a [routerLink]="['/jugadores',jugador.idEquipo]" class="btn btn-success">Jugadores</a>
+    </div>
+</div>
