@@ -29,14 +29,6 @@ export class HomeComponent implements OnInit {
       this.departamentos = response
     })
 
-    this._route.params.subscribe((params: Params) => {
-      var idD = parseInt(params['numero']);
-      console.log(idD)
-      this._service.eliminarDepartamento(idD).subscribe(response => {
-
-      })
-      this._router.navigate(["/home"]);
-    })
 
   }
 

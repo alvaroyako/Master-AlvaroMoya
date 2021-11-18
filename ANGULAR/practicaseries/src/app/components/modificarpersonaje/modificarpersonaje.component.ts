@@ -10,33 +10,33 @@ import { SerieService } from 'src/app/services/serie.service';
   styleUrls: ['./modificarpersonaje.component.css']
 })
 export class ModificarpersonajeComponent implements OnInit {
-  public series!:Array<Serie>
-  public personajes!:Array<Personaje>
+  public series!: Array<Serie>
+  public personajes!: Array<Personaje>
 
   @ViewChild("cajaserie") cajaserie!: ElementRef;
   @ViewChild("cajapersonaje") cajapersonaje!: ElementRef;
 
-  constructor(private _service: SerieService,private _router: Router) { }
-  cargarSeries():void{
-    this._service.getSeries().subscribe(response=>{
-      this.series=response;
+  constructor(private _service: SerieService, private _router: Router) { }
+  cargarSeries(): void {
+    this._service.getSeries().subscribe(response => {
+      this.series = response;
     })
   }
 
-  cargarPersonajes():void{
-    this._service.getPersonajes().subscribe(response=>{
-      this.personajes=response;
+  cargarPersonajes(): void {
+    this._service.getPersonajes().subscribe(response => {
+      this.personajes = response;
     })
   }
 
-  modificarPersonaje(){
-    var idserie=parseInt(this.cajaserie.nativeElement.value)
-    var idpersonaje=parseInt(this.cajapersonaje.nativeElement.value)
-    this._service.modificarPersonaje(idpersonaje,idserie).subscribe(response=>{
-      this.personajes=response;
+  modificarPersonaje() {
+    var idserie = parseInt(this.cajaserie.nativeElement.value)
+    var idpersonaje = parseInt(this.cajapersonaje.nativeElement.value)
+    this._service.modificarPersonaje(idpersonaje, idserie).subscribe(response => {
+      this._router.navigate(["/personajes", idserie]);
     })
 
-    this._router.navigate(["/detalles", idserie]);
+
   }
 
   ngOnInit(): void {

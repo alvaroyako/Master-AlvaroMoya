@@ -33,10 +33,10 @@ export class NuevopersonajeComponent implements OnInit {
     console.log(personaje)
 
     this._service.insertarPersonaje(personaje).subscribe(response => {
-
+      this._router.navigate(["/personajes", personaje.idSerie]);
     })
 
-    this._router.navigate(["/personajes", personaje.idSerie]);
+
   }
 
   ngOnInit(): void {

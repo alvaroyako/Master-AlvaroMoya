@@ -1,0 +1,8 @@
+<h1>Empleados departamento</h1>
+<a [routerLink]="['/']" class="btn btn-danger">Volver</a>
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let emp of empleados">
+        {{emp.apellido}}, Salario: <span style="color:blueviolet;">{{emp.salario}}</span>
+        <a [routerLink]="['/salario',emp.idEmpleado]" class="btn btn-info">Incrementar salario</a>
+    </li>
+</ul>

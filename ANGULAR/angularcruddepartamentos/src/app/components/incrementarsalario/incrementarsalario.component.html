@@ -1,0 +1,12 @@
+<h1>Incrementar salario</h1>
+<form #incrementarForm="ngForm">
+    <label>Incremento salarial: </label>
+    <input type="number" name="cajaincremento" #cajaincremento class="form-control">
+    <button class="btn btn-success" (click)="incrementarSalario()">Incrementar salario</button>
+</form>
+<hr>
+<div *ngIf="empleado">
+    <h1>{{empleado.apellido}}</h1>
+    <h2>{{empleado.salario}}</h2>
+    <h2>{{empleado.oficio}}</h2>
+</div>

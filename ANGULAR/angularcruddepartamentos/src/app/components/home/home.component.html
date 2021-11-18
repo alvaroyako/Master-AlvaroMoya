@@ -16,7 +16,7 @@
             <td><a class="btn btn-warning"
                     [routerLink]="['/editar/',departamento.numero,departamento.nombre,departamento.localidad]">Modificar</a>
             </td>
-            <td><a class="btn btn-danger" [routerLink]="['/eliminar/',departamento.numero]">Eliminar(Ruta)</a>
+            <td><a class="btn btn-info" [routerLink]="['/empleados',departamento.numero]">Empleados</a>
             </td>
             <td><a class="btn btn-danger" (click)="eliminarDepartamento(departamento.numero)">Eliminar(Metodo)</a>
             </td>
