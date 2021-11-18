@@ -52,4 +52,5 @@ export class ApuestasService {
     var url = Global.urlapuestas + request;
     return this._http.post(url, json, { headers: header })
   }
+
 }

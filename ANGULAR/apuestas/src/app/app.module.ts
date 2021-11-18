@@ -23,7 +23,7 @@ import { RealizarapuestaComponent } from './components/realizarapuesta/realizara
     ListajugadoresComponent,
     DetallesjugadorComponent,
     ListaapuestasComponent,
-    RealizarapuestaComponent
+    RealizarapuestaComponent,
   ],
   imports: [
     BrowserModule,
