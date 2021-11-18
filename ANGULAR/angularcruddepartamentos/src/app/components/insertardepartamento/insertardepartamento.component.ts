@@ -20,9 +20,9 @@ export class InsertardepartamentoComponent implements OnInit {
     var loc = this.cajalocalidad.nativeElement.value
     var departamento = new Departamento(num, nom, loc)
     this._service.insertarDepartamento(departamento).subscribe(response => {
-
+      this._router.navigate(["/home"]);
     })
-    this._router.navigate(["/home"]);
+
   }
 
   ngOnInit(): void {

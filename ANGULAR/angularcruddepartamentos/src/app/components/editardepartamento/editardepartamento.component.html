@@ -1,0 +1,13 @@
+<h1>Editar departamento</h1>
+<a class="btn btn-success" [routerLink]="['/']">Volver al listado</a>
+<form>
+    <input value="{{departamento.numero}}" type="hidden" #cajanumero name="cajanumero">
+
+    <label>Nombre: </label>
+    <input value="{{departamento.nombre}}" class="form-control" type="text" name="cajanombre" #cajanombre>
+
+    <label>Localidad: </label>
+    <input value="{{departamento.localidad}}" class="form-control" type="text" name="cajalocalidad" #cajalocalidad>
+
+    <button (click)="updateDepartamento()" class="btn btn-primary">Modificar</button>
+</form>

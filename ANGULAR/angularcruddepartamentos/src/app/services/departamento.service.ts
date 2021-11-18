@@ -23,4 +23,18 @@ export class DepartamentoService {
     var url = Global.urldepartamentos + request;
     return this._http.post(url, json, { headers: header });
   }
+
+  modificarDepartamento(dep: Departamento): Observable<any> {
+    var json = JSON.stringify(dep)
+    var header = new HttpHeaders().set("Content-Type", "application/json")
+    var request = "/api/Departamentos";
+    var url = Global.urldepartamentos + request;
+    return this._http.put(url, json, { headers: header });
+  }
+
+  eliminarDepartamento(id: number): Observable<any> {
+    var request = "/api/Departamentos/" + id;
+    var url = Global.urldepartamentos + request;
+    return this._http.delete(url);
+  }
 }
