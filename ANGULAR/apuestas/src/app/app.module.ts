@@ -13,6 +13,7 @@ import { ListajugadoresComponent } from './components/listajugadores/listajugado
 import { DetallesjugadorComponent } from './components/detallesjugador/detallesjugador.component';
 import { ListaapuestasComponent } from './components/listaapuestas/listaapuestas.component';
 import { RealizarapuestaComponent } from './components/realizarapuesta/realizarapuesta.component';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,8 @@ import { RealizarapuestaComponent } from './components/realizarapuesta/realizara
     DetallesjugadorComponent,
     ListaapuestasComponent,
     RealizarapuestaComponent,
+    BusquedaComponent,
+  
   ],
   imports: [
     BrowserModule,
