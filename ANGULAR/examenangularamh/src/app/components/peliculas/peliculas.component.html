@@ -1,0 +1,31 @@
+<h1>Peliculas</h1>
+
+<div class="text-center" *ngIf="visible" id="detalles">
+    <h2 style="color: goldenrod;">{{detalle.titulo}}</h2>
+    <img src={{detalle.foto}} alt="" style="width: 300px; height: 400px;">
+    <h2><i>{{detalle.argumento}}</i></h2>
+    <h2>{{genero}}</h2>
+    <h2>{{nacionalidad}}</h2>
+</div>
+<div *ngIf="!detalle">
+    <h1 class="text-danger">Loading...</h1>
+</div>
+<hr>
+
+<div *ngIf="!peliculas">
+    <h1 class="text-danger">Loading...</h1>
+</div>
+
+<div *ngIf="peliculas" class="text-center">
+    <div class="card mb-5" style="width: 18rem;display: table;margin: 0 auto;"
+        *ngFor="let pelicula of peliculas;let i=index">
+        <img class="card-img-top" src="{{pelicula.foto}}" alt="Card image cap">
+        <div class="card-body">
+            <h5 class="card-title">{{pelicula.titulo}}</h5>
+            <p class="card-text">{{pelicula.argumento}}</p>
+            <app-detallepeliculas [pelicula]="pelicula" [index]="i"
+                (seleccionarDetallePadre)="seleccionarDetallePadre($event)">
+            </app-detallepeliculas>
+        </div>
+    </div>
+</div>

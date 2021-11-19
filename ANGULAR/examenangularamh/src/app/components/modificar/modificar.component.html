@@ -1,0 +1,15 @@
+<h1>Modificar Pelicula</h1>
+
+<form #modForm="ngForm" (ngSubmit)="modificarPelicula()" style="display: table;margin: 0 auto;width: 70%;">
+    <label>Escoge una pelicula: </label>
+    <select class="form-control" name="cajapelicula" #cajapelicula>
+        <option *ngFor="let pelicula of peliculas" value="{{pelicula.idPelicula}}">{{pelicula.titulo}}</option>
+    </select>
+
+    <label>Escoge un genero: </label>
+    <select class="form-control" name="cajagenero" #cajagenero>
+        <option *ngFor="let genero of generos" value="{{genero.idGenero}}">{{genero.nombre}}</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary mt-4">Modificar pelicula</button>
+</form>
